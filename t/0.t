@@ -8,15 +8,22 @@
 
 BEGIN { $| = 1; print "1..3\n"; }
 END {print "not ok 1\n" unless $loaded;}
-use Geography::Country::FIPS;
+use Geography::Country::FIPS qw(Name iso2fips);
 $loaded = 1;
 print "ok 1\n";
 
-print "not " unless (Geography::Country::FIPS::Name('SW') eq 'Sweden');
+print "not " unless (Name('SW') eq 'Sweden');
 print "ok 2\n";
 
-print "not " unless (Geography::Country::FIPS::iso2fips('IS') eq 'IC');
-print "ok 3\n";
+eval { require Net::Country; $l2 = 1; };
+
+if ($l2) {
+
+	print "not " unless (iso2fips('IS') eq 'IC');
+	print "ok 3\n";
+} else {
+	print "ok 3 # Skipping test on this platform\n";
+}
 
 ######################### End of black magic.
 

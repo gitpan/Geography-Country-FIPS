@@ -28,7 +28,11 @@
 
 package Geography::Country::FIPS;
 
-$VERSION = 1.01;
+require Exporter;
+@EXPORT_OK = qw(Name iso2fips);
+@ISA = qw(Exporter);
+
+$VERSION = 1.02;
 
 while (<DATA>) {
     chop;
@@ -56,9 +60,6 @@ sub iso2fips {
 1;
 
 __DATA__
-
-FIPS Country Codes
-
 AA	Aruba
 AC	Antigua and Barbuda
 AF	Afghanistan

@@ -1,6 +1,9 @@
 Changes
-FIPS.pm
 MANIFEST
 Makefile.PL
-test.pl
 README
+t/0.t
+t/1.t
+lib/Geography/Country/FIPS.pm
+lib/Geography/Country/FIPS/Capitals.pm
+

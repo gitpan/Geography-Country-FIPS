@@ -3,5 +3,5 @@ use ExtUtils::MakeMaker;
 # the contents of the Makefile that is written.
 WriteMakefile(
     'NAME'	=> 'Geography::Country::FIPS',
-    'VERSION_FROM' => 'FIPS.pm', # finds $VERSION
+    'VERSION_FROM' => 'lib/Geography/Country/FIPS.pm', # finds $VERSION
 );
