@@ -176,6 +176,7 @@ NF Kingston
 NG Niamey
 NH Port-Vila
 NI Abuja
+NL Amsterdam
 NO Oslo
 NP Kathmandu
 NS Paramaribo

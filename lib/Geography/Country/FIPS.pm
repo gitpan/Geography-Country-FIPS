@@ -32,14 +32,14 @@ require Exporter;
 @EXPORT_OK = qw(Name iso2fips);
 @ISA = qw(Exporter);
 
-$VERSION = 1.02;
+$VERSION = 1.04;
 
 while (<DATA>) {
     chop;
     ($cc, $rest) = split ' ', $_, 2;
     next unless $cc;
     $country{$cc} = $rest;
-    $rest =~ s/\s*\(.*\)\s*$//;
+    $rest =~ s/\s*\(.*\)\s*$///;
     $rest =~ s/,.*$//;
     $cross{lc($rest)} = $cc;
     }
@@ -50,6 +50,8 @@ sub Name { $country{uc($_[0])} || $_[0] };
 sub iso2fips {
         my $c = uc(shift);
         return "GM" if ($c eq 'DE');
+        return "KR" if ($c eq 'KS');
+        return "KP" if ($c eq 'KN');
         require Net::Country;
         my $n = Net::Country::Name($c);
         return undef unless ($n);
@@ -134,7 +136,7 @@ FG	French Guiana
 FI	Finland
 FJ	Fiji
 FK	Falkland Islands
-FM	Federated States of Micronesia
+FM      Micronesia
 FO	Faroe Islands
 FP	French Polynesia
 FQ	Baker Island
@@ -185,10 +187,10 @@ JO	Jordan
 JQ	Johnston Atoll
 JU	Juan de Nova Island
 KE	Kenya
-KN	Korea, Democratic People's Rep.
+KN      Korea (North)
 KQ	Kingman Reef
 KR	Kiribati
-KS	Korea, Republic of
+KS      Korea (South)
 KT	Christmas Island
 KU	Kuwait
 LA	Laos
@@ -272,7 +274,7 @@ SW	Sweden
 SY	Syria
 SZ	Switzerland
 TC	United Arab Emirates
-TD	Trinidad and Tobago
+TD      Trinidad & Tobago
 TE	Tromelin Island
 TH	Thailand
 TK	Turks and Caicos Islands
